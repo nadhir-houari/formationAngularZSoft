@@ -1,0 +1,19 @@
+<script>
+onload(){
+asyncCall();
+setTimeout(function(){ console.log("Hello"); }, 500);
+});
+function resolveAfter2Seconds(){
+return new Promise(resolve => {
+setTimeout(() => {
+resolve('Resolved');}, 2000);});}
+
+async function asyncCall(){
+console.log('Calling');
+var result = await resolveAfter2Seconds();
+console.log(result);
+}
+
+
+</script>
+<button onclick="run()">click</button>

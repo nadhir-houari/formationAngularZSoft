@@ -1,0 +1,31 @@
+<% include ../shared/header %>
+<div class="ui comments">
+    <h2 class="ui dividing header"> Commentaires poster par
+        <%= commentaires[0].prenom+' '+commentaires[0].nom%>
+    </h2>
+
+    <% for (commentaire of commentaires) { %>
+    <div class="ui raised link card">
+        <div class="extra content">
+            <%=commentaire.created_at.format(('YYYY-MM-DD HH:mm'))%>
+            <a href='/message/<%= commentaire.nom %>/<%= commentaire.prenom %>/<%= commentaire.messageId %>'><i class="right floated delete icon"></i></a>
+        </div>
+        <div class="content">
+            <div class="description">
+                <p>
+                    <%= commentaire.content %>
+                </p>
+            </div>
+            <div class="meta">
+                <a class=" right floated like">
+                    <i class="like icon"></i> 4 Likes
+                </a>
+            </div>
+        </div>
+    </div>
+    <%}%>
+</div>
+
+
+
+<% include ../shared/footer %>

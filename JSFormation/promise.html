@@ -1,0 +1,47 @@
+<script>
+let learn = () => {
+  return new Promise((resolve, reject)=>{
+    if(true)
+      resolve("1 You are ready to go further");
+    else 
+      reject("Never give up, try again");
+  })
+}
+
+let believe = (message ) => {
+  return new Promise((resolve, reject)=>{
+    if(true)
+      resolve("2 "+message+ ". Next step, believe in what you do.");
+    else 
+      reject(messag+". Start believing in your self, because no one will believe in you unless you start believe in your self.");
+  })
+}
+
+let become = (message) => {
+  return new Promise((resolve, reject)=>{
+    if(true)
+      resolve("3 "+message+"You are ready to go further");
+    else 
+      reject(message+"Never give up, try again");
+  })
+}
+learn().then((result) => {
+  return believe(result);
+}).then((result)=>{
+  return become(result);
+}).then((result)=>{
+  console.log("Promise");
+  console.log(result+ "-- Finished.")
+})
+
+Promise.all([learn(),believe(),become()]).then((result)=>{
+  console.log("Promise.All");
+  console.log("Now you have became the best version of you ! + ==> "+ result)
+})
+Promise.race([learn(),believe(),become()]).then((result)=>{
+  console.log("You have complete perfectly the task => "+result);
+  console.log("Promise.Race");
+})
+console.log("Try and try again, until the lambs become lions !")
+
+</script>

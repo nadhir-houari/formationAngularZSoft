@@ -1,0 +1,54 @@
+<% include header %>
+<form action="/" method="post" class="ui form">
+    <div class="field">
+        <label>Nom</label>
+        <input type="text" name="nom" id="nom" placeholder="Nom" required>
+    </div>
+    <div class="field">
+        <label>Prénom</label>
+        <input type="text" name="prenom" id="prenom" placeholder="Prénom" required>
+    </div>
+    <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" minlength="3" required></textarea>
+    </div>
+    <button type="submit" class="ui blue labeled submit icon button">
+        <i class="icon edit"></i>
+        Envoyer
+    </button>
+</form>
+<div class="ui comments">
+    <h3 class="ui dividing header"> Commentaires</h3>
+    <% for (commentaire of commentaires) { %>
+    <div class="comment">
+        <a class="avatar" href="/message/<%=commentaire.nom%>/<%=commentaire.prenom%>">
+            <img src="https://randomuser.me/api/portraits/lego/7.jpg">
+        </a>
+        <div class="content">
+            <a class="author">
+                <%= commentaire.prenom+' '+commentaire.nom %></a>
+
+            <div class="metadata">
+                <div class="date">
+                    <%= commentaire.created_at.fromNow()%>
+                </div>
+                <div class="rating">
+                    <i class="star icon"></i>
+                    5 Faves
+                </div>
+            </div>
+            <div class="ui text">
+                <%= commentaire.content %>
+            </div>
+            <div class="actions">
+                    <a class="like">J'aime</a>
+                    <a class="like">Répondre</a>
+            </div>
+
+        </div>
+    </div>
+    <%}%>
+</div>
+
+
+<% include footer %>
